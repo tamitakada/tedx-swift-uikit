@@ -36,7 +36,7 @@ class AllFontsTVC: UITableViewController {
         let imageView: UIImageView = {
             let i = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
             i.contentMode = .scaleAspectFill
-            i.image = UIImage(named: "star")
+            i.image = UIImage(named: "star")?.withRenderingMode(.alwaysOriginal).withTintColor(Constants.Colors.text)
             i.isUserInteractionEnabled = true
             i.addGestureRecognizer(
                 UITapGestureRecognizer(target: self, action: #selector(goToFavorites))
@@ -180,7 +180,7 @@ class FontTableCell: UITableViewCell {
     let fontLabel: UILabel = {
         let l = UILabel()
         l.setUpLabel(text: nil, color: Constants.Colors.text, align: .left, font: .regular, size: 14)
-        l.backgroundColor = .white
+        l.backgroundColor = Constants.Colors.bg
         return l
     }()
     
@@ -197,10 +197,10 @@ class FontTableCell: UITableViewCell {
     
     private var favorited = false
     let favoriteButton: UIImageView = {
-        let i = UIImageView(image: UIImage(named: "star"))
+        let i = UIImageView(image: UIImage(named: "star")?.withRenderingMode(.alwaysOriginal).withTintColor(Constants.Colors.text))
         i.contentMode = .scaleAspectFit
         i.isUserInteractionEnabled = true
-        i.backgroundColor = .white
+        i.backgroundColor = Constants.Colors.bg
         return i
     }()
 
@@ -254,7 +254,7 @@ class FontTableCell: UITableViewCell {
     }
     
     private func changeFavoriteIcon() {
-        if favorited { favoriteButton.image = UIImage(named: "filled-star") }
-        else { favoriteButton.image = UIImage(named: "star") }
+        if favorited { favoriteButton.image = UIImage(named: "filled-star")?.withRenderingMode(.alwaysOriginal).withTintColor(Constants.Colors.text) }
+        else { favoriteButton.image = UIImage(named: "star")?.withRenderingMode(.alwaysOriginal).withTintColor(Constants.Colors.text) }
     }
 }
